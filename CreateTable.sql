@@ -9,3 +9,10 @@ CREATE TABLE Squad_Unit(
     PRIMARY KEY (squad_id),
     FOREIGN KEY(unit_id)
 )
+CREATE TABLE Players(
+	STRING username,
+	STRING password,
+	STRING email,
+	INTEGER player_id,
+	UNIQUE PRIMARY KEY (player_id)
+)
