@@ -5,7 +5,7 @@ CREATE TABLE Squad_Unit(
     INTEGER stats_hp,
     INTEGER stats_mov,
     INTEGER stats_spd,
-    INTEGAR stats_def,
+    INTEGER stats_def,
     PRIMARY KEY (squad_id),
     FOREIGN KEY(unit_id)
 )
