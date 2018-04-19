@@ -5,10 +5,11 @@ CREATE TABLE Squad_Unit(
     INTEGER stats_hp,
     INTEGER stats_mov,
     INTEGER stats_spd,
-    INTEGAR stats_def,
+    INTEGER stats_def,
     PRIMARY KEY (squad_id),
     FOREIGN KEY(unit_id)
 )
+<<<<<<< HEAD
 CREATE TABLE Players(
 	STRING username,
 	STRING password,
@@ -16,3 +17,5 @@ CREATE TABLE Players(
 	INTEGER player_id,
 	UNIQUE PRIMARY KEY (player_id)
 )
+=======
+>>>>>>> 2d7c0a67cb261109c73be9ae7a52d61ce4505dfe
