@@ -1,0 +1,60 @@
+CREATE TABLE abilities (ability_id SERIAL PRIMARY KEY NOT NULL, description VARCHAR(255) NOT NULL, unit_usable BOOLEAN,	ability_name VARCHAR(55) NOT NULL);
+CREATE TABLE users (user_id SERIAL PRIMARY KEY NOT NULL, email VARCHAR(55), username VARCHAR(55), password TEXT);
+CREATE TABLE units (unit_id  SERIAL PRIMARY KEY NOT NULL, unit_type VARCHAR(45), hp INT NOT NULL);
+CREATE TABLE user_units (user_unit_id INT PRIMARY KEY NOT NULL, unit_x INT, unit_y INT, unit_id INT REFERENCES units (unit_id), ability_id INT REFERENCES abilities (ability_id), user_id INT REFERENCES users(user_id));
+CREATE TABLE game (game_id INT NOT NULL PRIMARY KEY, user_unit_id INT REFERENCES user_units(user_unit_id));
+
+INSERT INTO abilities (description, unit_usable, ability_name) values ('Poisons an unit doing 50% attack damage over 4 turns', False, 'Poison');
+INSERT INTO abilities (description, unit_usable, ability_name) values ('Shoots 6 volleys of missiles, each volley does 25% damage', False, 'Arcane Missiles');
+INSERT INTO abilities (description, unit_usable, ability_name) values ('do 200% damage', True, 'Glacial Shard');
+INSERT INTO abilities (description, unit_usable, ability_name) values ('Does 150% attack healing', False, 'Restoritive Seronade');
+INSERT INTO abilities (description, unit_usable, ability_name) values ('Charge towards unit', False, 'Charge');
+INSERT INTO abilities (description, unit_usable, ability_name) values ('Stuns target for one round', True, 'Stun');
+INSERT INTO abilities (description, unit_usable, ability_name) values ('Take damage instead of an ally until next turn', False, 'Cover');
+INSERT INTO abilities (description, unit_usable, ability_name) values ('Does 200% basic attack damage', False, 'Brutal Blow');
+INSERT INTO abilities (description, unit_usable, ability_name) values ('Does 50% attack damage per turn for 3 turns', False, 'Poisoned Blades');
+INSERT INTO abilities (description, unit_usable, ability_name) values ('Attack for 20% damage 10 times', True, 'Slice And Dice');
+
+INSERT INTO game(game_id, user_unit_id) values (1, 001);
+INSERT INTO game(game_id, user_unit_id) values (2, 002);
+INSERT INTO game(game_id, user_unit_id) values (3, 003);
+INSERT INTO game(game_id, user_unit_id) values (4, 004);
+INSERT INTO game(game_id, user_unit_id) values (5, 005);
+INSERT INTO game(game_id, user_unit_id) values (6, 007);
+INSERT INTO game(game_id, user_unit_id) values (7, 008);
+INSERT INTO game(game_id, user_unit_id) values (8, 009);
+INSERT INTO game(game_id, user_unit_id) values (9, 0055);
+INSERT INTO game(game_id, user_unit_id) values (10, 00089);
+
+INSERT INTO user_units(user_unit_id, unit_x, unit_y) values (2001, 0, 0);
+INSERT INTO user_units(user_unit_id, unit_x, unit_y) values (2002, 0, 10);
+INSERT INTO user_units(user_unit_id, unit_x, unit_y) values (2003, 10, 10);
+INSERT INTO user_units(user_unit_id, unit_x, unit_y) values (2004, 20, 30);
+INSERT INTO user_units(user_unit_id, unit_x, unit_y) values (2005, 30, 40);
+INSERT INTO user_units(user_unit_id, unit_x, unit_y) values (2006, 50, 50);
+INSERT INTO user_units(user_unit_id, unit_x, unit_y) values (2007, 60, 60);
+INSERT INTO user_units(user_unit_id, unit_x, unit_y) values (2008, 70, 85);
+INSERT INTO user_units(user_unit_id, unit_x, unit_y) values (2009, 30, 45);
+INSERT INTO user_units(user_unit_id, unit_x, unit_y) values (2010, 45, 20);
+
+INSERT INTO units(unit_type, hp) values ('Tank', 150);
+INSERT INTO units(unit_type, hp) values ('Mage', 100);
+INSERT INTO units(unit_type, hp) values ('Archer', 120);
+INSERT INTO units(unit_type, hp) values ('Thief', 110);
+INSERT INTO units(unit_type, hp) values ('Healer', 100);
+INSERT INTO units(unit_type, hp) values ('Gunslinger', 120);
+INSERT INTO units(unit_type, hp) values ('Demo-Man', 125);
+INSERT INTO units(unit_type, hp) values ('Warrior', 135);
+INSERT INTO units(unit_type, hp) values ('Priest', 105);
+INSERT INTO units(unit_type, hp) values ('Sniper', 100);
+
+INSERT INTO users (user_id, email, username, password) values (0001, 'one@aol.com', 'one', '11111');
+INSERT INTO users (user_id, email, username, password) values (0010, 'two@aol.com', 'two', '22222');
+INSERT INTO users (user_id, email, username, password) values (0011, 'three@aol.com', 'three', '33333');
+INSERT INTO users (user_id, email, username, password) values (0100, 'four@aol.com', 'four', '44444');
+INSERT INTO users (user_id, email, username, password) values (0101, 'five@aol.com', 'five', '55555');
+INSERT INTO users (user_id, email, username, password) values (0110, 'six@aol.com', 'six', '66666');
+INSERT INTO users (user_id, email, username, password) values (0111, 'seven@aol.com', 'seven', '77777');
+INSERT INTO users (user_id, email, username, password) values (1000, 'eight@aol.com', 'eight', '88888');
+INSERT INTO users (user_id, email, username, password) values (1001, 'nine@aol.com', 'nine', '99999');
+INSERT INTO users (user_id, email, username, password) values (1010, 'ten@aol.com', 'ten', '1010101010');
